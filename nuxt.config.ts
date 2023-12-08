@@ -15,17 +15,16 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      prefix: process.env.PREFIX
+      baseUrl: process.env.API_BASE_URL
     }
   },
   vite: {
-    server: {
-    proxy: {
-      '/api/v1': {
-        target: process.env.API_BASE_URL,
-        changeOrigin: true
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "@/assets/styles/variables.scss" as *;'
+        }
       }
     }
-  }
   }
 })
