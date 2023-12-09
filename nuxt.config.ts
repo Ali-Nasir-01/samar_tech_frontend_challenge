@@ -4,6 +4,12 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/styles/main.scss'],
   modules: ['@nuxt/image'],
+  components: [
+    {
+      path: '~/components',
+     pathPrefix: false,
+    },
+  ],
   postcss: {
     plugins: {
       tailwindcss: {},
