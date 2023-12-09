@@ -1,7 +1,13 @@
 <template>
   <button
     class="font-bold px-7 h-[45px]"
-    :class="[`bg-${color}`, `hover:${color}`, textColor, rounded]"
+    :class="[
+      outline
+        ? `border-solid border-2 border-[#E9EDF5] text-${color}`
+        : `bg-${color} hover:${color}`,
+      outline ? '' : textColor,
+      rounded,
+    ]"
   >
     <slot />
   </button>
@@ -12,11 +18,13 @@ interface IProps {
   color?: string;
   textColor?: string;
   rounded?: string;
+  outline?: boolean;
 }
 
 withDefaults(defineProps<IProps>(), {
   color: "primary",
   textColor: "text-white",
   rounded: "rounded",
+  outline: false,
 });
 </script>

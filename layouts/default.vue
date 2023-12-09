@@ -1,7 +1,7 @@
 <template>
   <div>
     <app-bar />
-    <section class="container mx-auto">
+    <section class="container mx-auto my-6">
       <slot />
     </section>
   </div>
