@@ -5,9 +5,10 @@
 
 * {
     direction: rtl;
-    font-family: vazir;
+    font-family: $font-family;
 }
 
 html {
     scroll-behavior: smooth;
+    background: $background-color;
 }
