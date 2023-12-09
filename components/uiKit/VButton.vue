@@ -9,9 +9,9 @@
 
 <script setup lang="ts">
 interface IProps {
-  color: string;
-  textColor: string;
-  rounded: string;
+  color?: string;
+  textColor?: string;
+  rounded?: string;
 }
 
 withDefaults(defineProps<IProps>(), {

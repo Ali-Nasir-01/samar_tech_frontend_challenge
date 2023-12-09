@@ -144,9 +144,9 @@
 <script setup lang="ts">
 interface IProps {
   icon: string;
-  color: string;
-  width: string;
-  height: string;
+  color?: string;
+  width?: string;
+  height?: string;
 }
 
 withDefaults(defineProps<IProps>(), {

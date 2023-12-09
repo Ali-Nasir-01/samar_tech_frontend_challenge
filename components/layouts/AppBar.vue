@@ -1,6 +1,6 @@
 <template>
   <header class="w-full bg-[#fff] py-6 rounded-b-lg shadow">
-    <section class="container mx-auto flex item-baseline mt-3 relative">
+    <nav class="container mx-auto flex item-baseline mt-3 relative">
       <div class="flex justify-around w-[600px] mx-auto">
         <template v-for="item in items" :key="item.text">
           <SvgRender
@@ -27,7 +27,7 @@
           <SvgRender icon="phone" color="#fff" width="20" class="mr-3" />
         </div>
       </VButton>
-    </section>
+    </nav>
   </header>
 </template>
 
@@ -43,17 +43,17 @@ const items = [
   },
   {
     text: "دریافت مشاوره",
-    link: "/#",
+    link: "/",
     icon: "book",
   },
   {
     text: "سوالات متداول",
-    link: "/#",
+    link: "/",
     icon: "question",
   },
   {
     text: "تماس با ما",
-    link: "/#",
+    link: "/",
     icon: "phone",
   },
 ];
