@@ -138,6 +138,23 @@
         stroke="white"
       />
     </svg>
+    <svg
+      v-else-if="icon === 'left-arrow'"
+      :width="width"
+      :height="height"
+      viewBox="0 0 17 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M10.8332 13.28L6.48656 8.9333C5.97323 8.41997 5.97323 7.57997 6.48656 7.06664L10.8332 2.71997"
+        :stroke="color"
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
   </div>
 </template>
 
