@@ -1,7 +1,12 @@
 <template>
   <div>
-    <slot />
+    <app-bar />
+    <section class="container mx-auto">
+      <slot />
+    </section>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import AppBar from "~/components/layouts/AppBar";
+</script>
