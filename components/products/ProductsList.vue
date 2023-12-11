@@ -15,8 +15,11 @@
 import type { IProduct } from "@/types/apis";
 
 const { $fetch } = useNuxtApp();
+const {
+  public: { products },
+} = useRuntimeConfig();
 
 const { data } = await useAsyncData<IProduct[]>("products", () =>
-  $fetch("/products")
+  $fetch(products)
 );
 </script>

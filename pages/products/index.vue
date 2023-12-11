@@ -15,7 +15,7 @@
           class="flex items-center justify-between"
           :class="[isSortVisible ? 'mb-3' : '']"
         >
-          <h3 class="text-[#445A74]">مرتب سازی</h3>
+          <h3 class="text-[#445A74]">مرتب‌سازی</h3>
           <SvgRender
             icon="arrow-down"
             width="20"
@@ -39,7 +39,9 @@
         </div>
       </VCard>
       <!-- Category card -->
+      <CategoriesCard />
     </aside>
+    <!-- Products list -->
     <ProductsList class="col-span-9 w-full" />
   </div>
 </template>
