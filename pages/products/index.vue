@@ -3,7 +3,7 @@
     <aside class="col-span-3 w-full">
       <VCard>
         <h3 class="text-[#445A74]">فیلتر و جستجو</h3>
-        <VInput v-model="searchInput" class="my-5" />
+        <VInput v-model="searchInput" class="my-5" @keyup.enter="search" />
         <!-- action -->
         <VButton class="w-full h-[45px]" rounded="rounded-2xl" @click="search">
           <span class="font-light text-lg">جستجو</span>
@@ -25,12 +25,14 @@ const search = () => {
     if (route.query?.search) {
       value.push(...(<string>route.query.search).split(","));
     }
+    value = uniqItems(value);
     value = value.join(",");
     router.replace({
       query: {
         search: value,
       },
     });
+    searchInput.value = null;
   }
 };
 </script>
