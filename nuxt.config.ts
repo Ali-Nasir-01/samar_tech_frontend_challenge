@@ -21,7 +21,9 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      baseUrl: process.env.API_BASE_URL
+      baseUrl: process.env.API_BASE_URL,
+      products: '',
+      categories: ''
     }
   },
   vite: {
