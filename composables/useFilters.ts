@@ -22,6 +22,13 @@ export default function useFilters() {
 
     const getSort: ComputedRef<string> = computed(() => <string>route.query?.sort || "asc");
 
+    const getSearch: ComputedRef<string[]> = computed(() => {
+        if (route.query.search) {
+            return (<string>route.query.search).split(',')
+        }
+        return [];
+    });
+
     const updateCategoryFilter = (category: string[]) => {
         interface IValue {
             [category: string]: string | undefined
@@ -53,10 +60,30 @@ export default function useFilters() {
         updateQuery(value);
     }
 
+    const updateSearchFilter = (word: string) => {
+        interface IValue {
+            [search: string]: string | undefined
+        }
+
+        let value:IValue = {
+            search: undefined
+        }
+        
+        let searching = [word, ...getSearch.value];
+        searching = uniqItems(searching);
+        if (searching.length > 0) {
+            value.search = searching.join(",");
+        }
+
+        updateQuery(value);
+    }
+
     return {
         getCategories,
         getSort,
+        getSearch,
         updateCategoryFilter,
-        updateSortFilter
+        updateSortFilter,
+        updateSearchFilter
     }
 }
