@@ -2,7 +2,7 @@
   <div>
     <div class="grid grid-cols-3 gap-4">
       <ProductView
-        v-for="(item, key) in data"
+        v-for="(item, key) in filteredData"
         :key="key"
         :item="item"
         class="col-span-1"
@@ -18,6 +18,17 @@ const { $fetch } = useNuxtApp();
 const {
   public: { products },
 } = useRuntimeConfig();
+const { getCategories } = useFilters();
+
+// Category filter handle client-side because API does'nt support multiple category filter
+const filteredData = computed(() => {
+  if (getCategories.value.length > 0 && data.value) {
+    return data.value.filter((item) =>
+      getCategories.value.includes(item.category)
+    );
+  }
+  return data.value;
+});
 
 const { data } = await useAsyncData<IProduct[]>("products", () =>
   $fetch(products)

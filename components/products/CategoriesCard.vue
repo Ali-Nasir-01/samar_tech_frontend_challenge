@@ -37,7 +37,7 @@ const { $fetch } = useNuxtApp();
 const { updateCategoryFilter, getCategories } = useFilters();
 
 const isCategoryVisible = shallowRef<boolean>(true);
-const selectedCategories = ref<string[]>([...getCategories.value]);
+const selectedCategories = ref<string[]>(getCategories.value);
 
 const { data: categoriesList } = useAsyncData<string[]>("categories", () =>
   $fetch(categories)
