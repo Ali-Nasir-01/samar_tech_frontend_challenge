@@ -37,18 +37,13 @@ const { $fetch } = useNuxtApp();
 const { updateCategoryFilter, getCategories } = useFilters();
 
 const isCategoryVisible = shallowRef<boolean>(true);
-const selectedCategories = ref<string[]>([getCategories.value]);
+const selectedCategories = ref<string[]>(getCategories.value);
 
 const { data: categoriesList } = useAsyncData<string[]>("categories", () =>
   $fetch(categories)
 );
 
 watch(selectedCategories, () => {
-  // Preventing multi-select category due to API limitations; not changing to radio buttons for consistency with UI
-  if (selectedCategories.value.length > 1) {
-    selectedCategories.value.splice(0, 1);
-  }
-
   // Update URL query
   updateCategoryFilter(selectedCategories.value);
 });

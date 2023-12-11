@@ -42,15 +42,19 @@
       <CategoriesCard />
     </aside>
     <!-- Products list -->
-    <ProductsList class="col-span-9 w-full" />
+    <div class="col-span-9 w-full">
+      <AppliedFilters class="mb-4" />
+      <ProductsList class="w-full" />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 const router = useRouter();
 const route = useRoute();
-const searchInput = ref<string | null>(null);
-const sort = shallowRef<string>("asc");
+const { updateSortFilter, getSort, updateSearchFilter } = useFilters();
+const searchInput = ref<string>("");
+const sort = shallowRef<string>(getSort.value);
 const isSortVisible = shallowRef<boolean>(true);
 
 const sortValues = [
@@ -65,19 +69,12 @@ const sortValues = [
 ];
 
 const search = () => {
-  if (searchInput.value) {
-    let value: string | string[] = [searchInput.value];
-    if (route.query?.search) {
-      value.push(...(<string>route.query.search).split(","));
-    }
-    value = uniqItems(value);
-    value = value.join(",");
-    router.replace({
-      query: {
-        search: value,
-      },
-    });
-    searchInput.value = null;
-  }
+  updateSearchFilter(searchInput.value);
+
+  searchInput.value = "";
 };
+
+watch(sort, () => {
+  updateSortFilter(sort.value);
+});
 </script>
