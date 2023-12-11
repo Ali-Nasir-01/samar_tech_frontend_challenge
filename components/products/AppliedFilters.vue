@@ -1,7 +1,7 @@
 <template>
   <VCard v-if="isVisible">
     <div class="flex items-center">
-      <span class="ml-auto"> فیلترهای اعمال شده </span>
+      <span class="ml-auto text-[#253343]"> فیلترهای اعمال شده </span>
       <div class="flex items-center">
         <VChip
           v-for="(item, index) in searchInstance"
