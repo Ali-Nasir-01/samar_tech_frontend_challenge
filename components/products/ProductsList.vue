@@ -18,7 +18,7 @@ const { $fetch } = useNuxtApp();
 const {
   public: { products },
 } = useRuntimeConfig();
-const { getCategories } = useFilters();
+const { getCategories, getSort } = useFilters();
 
 // Category filter handle client-side because API does'nt support multiple category filter
 const filteredData = computed(() => {
@@ -30,7 +30,15 @@ const filteredData = computed(() => {
   return data.value;
 });
 
-const { data } = await useAsyncData<IProduct[]>("products", () =>
-  $fetch(products)
+const { data, refresh } = await useAsyncData<IProduct[]>(products, () =>
+  $fetch(products, {
+    query: {
+      sort: getSort.value,
+    },
+  })
 );
+
+watch(getSort, () => {
+  refresh();
+});
 </script>
