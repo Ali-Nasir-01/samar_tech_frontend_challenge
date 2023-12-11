@@ -171,6 +171,28 @@
         />
       </g>
     </svg>
+    <svg
+      v-else-if="icon === 'arrow-down'"
+      :width="width"
+      :height="height"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g id="vuesax/linear/arrow-left">
+        <g id="arrow-left">
+          <path
+            id="Vector"
+            d="M13.2802 6.00002L8.93355 10.3467C8.42021 10.86 7.58021 10.86 7.06688 10.3467L2.72021 6.00002"
+            :stroke="color"
+            stroke-width="1.5"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </g>
+      </g>
+    </svg>
   </div>
 </template>
 
