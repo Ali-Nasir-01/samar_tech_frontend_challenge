@@ -20,6 +20,8 @@ export default function useFilters() {
         return []
     });
 
+    const getSort: ComputedRef<string> = computed(() => <string>route.query?.sort || "asc");
+
     const updateCategoryFilter = (category: string[]) => {
         interface IValue {
             [category: string]: string | undefined
@@ -35,8 +37,26 @@ export default function useFilters() {
         updateQuery(value);
     }
 
+    const updateSortFilter = (sort: string) => {
+        interface IValue {
+            [sort: string]: undefined | string
+        }
+
+        let value: IValue = {
+            sort: undefined
+        }
+
+        if (sort !== 'asc') {
+            value.sort = sort;
+        }
+
+        updateQuery(value);
+    }
+
     return {
         getCategories,
-        updateCategoryFilter
+        getSort,
+        updateCategoryFilter,
+        updateSortFilter
     }
 }

@@ -49,8 +49,9 @@
 <script setup lang="ts">
 const router = useRouter();
 const route = useRoute();
+const { updateSortFilter, getSort } = useFilters();
 const searchInput = ref<string | null>(null);
-const sort = shallowRef<string>("asc");
+const sort = shallowRef<string>(getSort.value);
 const isSortVisible = shallowRef<boolean>(true);
 
 const sortValues = [
@@ -80,4 +81,8 @@ const search = () => {
     searchInput.value = null;
   }
 };
+
+watch(sort, () => {
+  updateSortFilter(sort.value);
+});
 </script>
