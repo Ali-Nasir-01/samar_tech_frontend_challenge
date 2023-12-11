@@ -1,5 +1,5 @@
 <template>
-  <VCard>
+  <VCard class="select-none">
     <img :src="item.image" :alt="item.title" class="h-[180px] mx-auto" />
     <h4 class="text-secondary font-bold mt-5">
       {{ item.title }}

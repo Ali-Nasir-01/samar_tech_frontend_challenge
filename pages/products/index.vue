@@ -11,8 +11,11 @@
       </VCard>
       <!-- Sort card -->
       <VCard class="my-4">
-        <div class="flex items-center justify-between">
-          <h3 class="text-[#445A74] mb-3">مرتب سازی</h3>
+        <div
+          class="flex items-center justify-between"
+          :class="[isSortVisible ? 'mb-3' : '']"
+        >
+          <h3 class="text-[#445A74]">مرتب سازی</h3>
           <SvgRender
             icon="arrow-down"
             width="20"
@@ -21,7 +24,7 @@
             @click="isSortVisible = !isSortVisible"
           />
         </div>
-        <div v-if="isSortVisible">
+        <div v-if="isSortVisible" class="select-none">
           <div v-for="(item, index) in sortValues" :key="index">
             <label class="inline-flex items-center mt-3">
               <input
