@@ -13,7 +13,12 @@ export default function useFilters() {
         })
     }
 
-    const getCategories: ComputedRef<string> = computed(() => <string>route.query?.category || '');
+    const getCategories: ComputedRef<string[]> = computed(() => {
+        if (route.query?.category) {
+            return (<string>route.query.category).split(',');
+        }
+        return []
+    });
 
     const updateCategoryFilter = (category: string[]) => {
         interface IValue {
@@ -24,7 +29,7 @@ export default function useFilters() {
             category: undefined
         };
         if (category.length > 0) {
-            value.category = category[0];   
+            value.category = category.join(',');   
         }
 
         updateQuery(value);
