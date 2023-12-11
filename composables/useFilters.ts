@@ -60,7 +60,7 @@ export default function useFilters() {
         updateQuery(value);
     }
 
-    const updateSearchFilter = (word: string) => {
+    const updateSearchFilter = (words: string | string[], push = true) => {
         interface IValue {
             [search: string]: string | undefined
         }
@@ -69,7 +69,12 @@ export default function useFilters() {
             search: undefined
         }
         
-        let searching = [word, ...getSearch.value];
+        let searching = [];
+        if (push) {
+            searching = [<string>words, ...getSearch.value];
+        } else {
+            searching = <string[]>words;
+        }
         searching = uniqItems(searching);
         if (searching.length > 0) {
             value.search = searching.join(",");

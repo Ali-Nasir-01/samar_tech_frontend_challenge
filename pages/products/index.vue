@@ -42,7 +42,10 @@
       <CategoriesCard />
     </aside>
     <!-- Products list -->
-    <ProductsList class="col-span-9 w-full" />
+    <div class="col-span-9 w-full">
+      <AppliedFilters class="mb-4" />
+      <ProductsList class="w-full" />
+    </div>
   </div>
 </template>
 
