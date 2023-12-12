@@ -3,7 +3,7 @@
     class="font-bold px-7 h-[45px]"
     :class="[
       outline
-        ? `border-solid border-2 border-[#E9EDF5] text-${color}`
+        ? `border-solid border-2 border-[#E9EDF5] text-${color} active:border-primary`
         : `bg-${color} hover:${color}`,
       outline ? '' : textColor,
       rounded,

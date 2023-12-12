@@ -23,7 +23,8 @@ export default defineNuxtConfig({
     public: {
       baseUrl: process.env.API_BASE_URL,
       products: '',
-      categories: ''
+      categories: '',
+      singleProduct: ''
     }
   },
   vite: {
