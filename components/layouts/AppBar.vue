@@ -6,16 +6,16 @@
           <SvgRender
             :icon="item.icon"
             class="-mt-4 -ml-4"
-            :color="item.link === path ? '#E20054' : undefined"
+            :color="path.includes(item.link) ? '#E20054' : undefined"
             width="20"
           />
           <NuxtLink
             :to="item.link"
-            :class="[item.link === path ? 'text-primary' : '']"
+            :class="[path.includes(item.link) ? 'text-primary' : '']"
           >
             {{ item.text }}
             <div
-              v-if="path === item.link"
+              v-if="path.includes(item.link)"
               class="bg-primary w-[8px] h-[8px] rounded-full mt-2 mx-auto"
             ></div>
           </NuxtLink>
@@ -43,17 +43,17 @@ const items = [
   },
   {
     text: "دریافت مشاوره",
-    link: "/",
+    link: "#",
     icon: "book",
   },
   {
     text: "سوالات متداول",
-    link: "/",
+    link: "#",
     icon: "question",
   },
   {
     text: "تماس با ما",
-    link: "/",
+    link: "#",
     icon: "phone",
   },
 ];
