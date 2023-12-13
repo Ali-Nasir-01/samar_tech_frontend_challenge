@@ -56,8 +56,6 @@ const sortInstance = ref(getSort.value);
 const sortTranslate = {
   rate: "رتبه",
   count: "تعداد",
-  asc: "کم به زیاد",
-  desc: "زیاد به کم",
 };
 const sortText = computed(() => {
   if (sortInstance.value) {
