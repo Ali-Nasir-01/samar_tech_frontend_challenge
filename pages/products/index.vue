@@ -50,8 +50,6 @@
 </template>
 
 <script setup lang="ts">
-const router = useRouter();
-const route = useRoute();
 const { updateSortFilter, getSort, updateSearchFilter } = useFilters();
 const searchInput = ref<string>("");
 const sort = shallowRef<string | null>(getSort.value);
@@ -84,5 +82,9 @@ const search = () => {
 
 watch(sort, () => {
   updateSortFilter(sort.value || undefined);
+});
+
+watch(getSort, (newVal) => {
+  sort.value = newVal;
 });
 </script>
