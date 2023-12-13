@@ -4,7 +4,18 @@
       <span class="ml-auto text-[#253343]"> فیلترهای اعمال شده </span>
       <div class="flex items-center">
         <VChip v-if="sortInstance" class="mx-1" @close="removeSort">
-          {{ sortText }}
+          <div class="flex items-center">
+            <SvgRender
+              icon="sort"
+              color="#000"
+              width="22"
+              class="ml-1"
+              :class="[
+                sortInstance.split('-')[1] === 'desc' ? '' : 'rotate-180',
+              ]"
+            />
+            {{ sortText }}
+          </div>
         </VChip>
         <VChip
           v-for="(item, index) in searchInstance"
@@ -12,7 +23,7 @@
           class="mx-1"
           @close="removeSearchKey(index)"
         >
-          <SvgRender icon="search" class="ml-2" />
+          <SvgRender icon="search" class="ml-2" color="#000" />
           <div class="flex items-center">
             {{ item }}
           </div>
@@ -51,7 +62,7 @@ const sortTranslate = {
 const sortText = computed(() => {
   if (sortInstance.value) {
     let split = sortInstance.value.split("-");
-    return `${sortTranslate[split[0]]}:${sortTranslate[split[1]]}`;
+    return `${sortTranslate[split[0]]}`;
   }
   return null;
 });
