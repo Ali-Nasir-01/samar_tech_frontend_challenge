@@ -24,6 +24,7 @@
         {{ product?.title || "-" }}
       </span>
     </div>
+    <ProductDetailsView :product="product" class="mt-7" />
   </div>
 </template>
 
