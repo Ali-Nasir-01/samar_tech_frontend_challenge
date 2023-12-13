@@ -3,6 +3,9 @@
     <div class="flex items-center">
       <span class="ml-auto text-[#253343]"> فیلترهای اعمال شده </span>
       <div class="flex items-center">
+        <VChip v-if="sortInstance" class="mx-1" @close="removeSort">
+          {{ sortText }}
+        </VChip>
         <VChip
           v-for="(item, index) in searchInstance"
           :key="index"
@@ -27,13 +30,36 @@
 </template>
 
 <script setup lang="ts">
-const { getCategories, getSearch, updateCategoryFilter, updateSearchFilter } =
-  useFilters();
+const {
+  getCategories,
+  getSort,
+  getSearch,
+  updateCategoryFilter,
+  updateSearchFilter,
+  updateSortFilter,
+} = useFilters();
 const categoriesInstance = ref(getCategories.value);
 const searchInstance = ref(getSearch.value);
+const sortInstance = ref(getSort.value);
+
+const sortTranslate = {
+  rate: "رتبه",
+  count: "تعداد",
+  asc: "کم به زیاد",
+  desc: "زیاد به کم",
+};
+const sortText = computed(() => {
+  if (sortInstance.value) {
+    let split = sortInstance.value.split("-");
+    return `${sortTranslate[split[0]]}:${sortTranslate[split[1]]}`;
+  }
+  return null;
+});
 
 const isVisible: ComputedRef<boolean> = computed(
-  () => [...getCategories.value, ...getSearch.value].length > 0
+  () =>
+    [...getCategories.value, ...getSearch.value].length > 0 ||
+    getSort.value !== null
 );
 
 const removeSearchKey = (index: number) => {
@@ -46,11 +72,19 @@ const removeCategory = (index: number) => {
   updateCategoryFilter(categoriesInstance.value);
 };
 
+const removeSort = () => {
+  updateSortFilter(undefined);
+};
+
 watch(getCategories, (newVal) => {
   categoriesInstance.value = newVal;
 });
 
 watch(getSearch, (newVal) => {
   searchInstance.value = newVal;
+});
+
+watch(getSort, (newVal) => {
+  sortInstance.value = newVal;
 });
 </script>

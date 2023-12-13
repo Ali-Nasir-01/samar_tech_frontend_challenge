@@ -34,10 +34,25 @@ const dataBasedOnCategory = computed(() => {
   return data.value;
 });
 
+const sortedData = computed(() => {
+  if (getSort.value) {
+    let sortValue = getSort.value.split("-");
+    let sorted = dataBasedOnCategory.value?.sort((a, b) => {
+      return a.rating[sortValue[0]] - b.rating[sortValue[0]];
+    });
+    if (sortValue[1] === "desc") {
+      sorted = sorted?.reverse();
+    }
+    return sorted;
+  }
+
+  return dataBasedOnCategory.value;
+});
+
 // Filter based on search words
 const filteredData = computed(() => {
-  if (getSearch.value.length === 0) return dataBasedOnCategory.value;
-  return dataBasedOnCategory.value?.filter((item) => {
+  if (getSearch.value.length === 0) return sortedData.value;
+  return sortedData.value?.filter((item) => {
     for (const word of getSearch.value) {
       if (item.title.includes(word)) {
         return true;
@@ -47,15 +62,7 @@ const filteredData = computed(() => {
   });
 });
 
-const { data, refresh } = await useAsyncData<IProduct[]>(products, () =>
-  $fetch(products, {
-    query: {
-      sort: getSort.value,
-    },
-  })
+const { data } = await useAsyncData<IProduct[]>(products, () =>
+  $fetch(products)
 );
-
-watch(getSort, () => {
-  refresh();
-});
 </script>

@@ -54,17 +54,25 @@ const router = useRouter();
 const route = useRoute();
 const { updateSortFilter, getSort, updateSearchFilter } = useFilters();
 const searchInput = ref<string>("");
-const sort = shallowRef<string>(getSort.value);
+const sort = shallowRef<string | null>(getSort.value);
 const isSortVisible = shallowRef<boolean>(true);
 
 const sortValues = [
   {
-    text: "صعودی",
-    value: "asc",
+    text: "تعداد: کم به زیاد",
+    value: "count-asc",
   },
   {
-    text: "نزولی",
-    value: "desc",
+    text: "تعداد: زیاد به کم",
+    value: "count-desc",
+  },
+  {
+    text: "رتبه: زیاد به کم",
+    value: "rate-desc",
+  },
+  {
+    text: "رتبه: کم به زیاد",
+    value: "rate-asc",
   },
 ];
 
@@ -75,6 +83,6 @@ const search = () => {
 };
 
 watch(sort, () => {
-  updateSortFilter(sort.value);
+  updateSortFilter(sort.value || undefined);
 });
 </script>
