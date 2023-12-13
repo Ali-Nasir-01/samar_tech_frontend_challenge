@@ -20,7 +20,7 @@ export default function useFilters() {
         return []
     });
 
-    const getSort: ComputedRef<string> = computed(() => <string>route.query?.sort || "asc");
+    const getSort: ComputedRef<string | null> = computed(() => <string>route.query?.sort || null);
 
     const getSearch: ComputedRef<string[]> = computed(() => {
         if (route.query.search) {
@@ -44,7 +44,7 @@ export default function useFilters() {
         updateQuery(value);
     }
 
-    const updateSortFilter = (sort: string) => {
+    const updateSortFilter = (sort: string | undefined) => {
         interface IValue {
             [sort: string]: undefined | string
         }
@@ -53,9 +53,7 @@ export default function useFilters() {
             sort: undefined
         }
 
-        if (sort !== 'asc') {
-            value.sort = sort;
-        }
+        value.sort = sort;
 
         updateQuery(value);
     }

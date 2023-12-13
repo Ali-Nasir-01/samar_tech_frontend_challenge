@@ -47,4 +47,8 @@ watch(selectedCategories, () => {
   // Update URL query
   updateCategoryFilter(selectedCategories.value);
 });
+
+watch(getCategories, (newVal) => {
+  selectedCategories.value = newVal;
+});
 </script>
