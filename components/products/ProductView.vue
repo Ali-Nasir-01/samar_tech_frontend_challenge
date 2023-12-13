@@ -4,7 +4,12 @@
     <h4 class="text-secondary font-bold mt-5">
       {{ item.title }}
     </h4>
-    <VButton class="w-full mt-5 h-[40px]" rounded="rounded-2xl" outline>
+    <VButton
+      class="w-full mt-5 h-[40px]"
+      rounded="rounded-2xl"
+      outline
+      @click="$router.push(`/products/${item.id}`)"
+    >
       <div class="flex align-center justify-center">
         مشاهده جزئیات
         <SvgRender icon="left-arrow" color="#E20054" width="18" class="mr-1" />

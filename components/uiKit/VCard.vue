@@ -1,6 +1,6 @@
 <template>
   <div class="card bg-white rounded-3xl w-full">
-    <div class="p-4">
+    <div class="p-6">
       <slot />
     </div>
   </div>
