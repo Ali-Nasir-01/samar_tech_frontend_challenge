@@ -17,21 +17,23 @@
 
 <script setup lang="ts">
 import type { IProduct } from "@/types/apis";
+import { useProductsStore } from "@/stores/products";
 
 const { $fetch } = useNuxtApp();
 const {
   public: { products },
 } = useRuntimeConfig();
 const { getCategories, getSort, getSearch } = useFilters();
+const store = useProductsStore();
 
 // Category filter handle client-side because API does'nt support multiple category filter
 const dataBasedOnCategory = computed(() => {
-  if (getCategories.value.length > 0 && data.value) {
-    return data.value.filter((item) =>
+  if (getCategories.value.length > 0 && productsList.value) {
+    return productsList.value.filter((item) =>
       getCategories.value.includes(item.category)
     );
   }
-  return data.value;
+  return productsList.value;
 });
 
 const sortedData = computed(() => {
@@ -62,7 +64,8 @@ const filteredData = computed(() => {
   });
 });
 
-const { data } = await useAsyncData<IProduct[]>(products, () =>
+const { data: productsList } = await useAsyncData<IProduct[]>(products, () =>
   $fetch(products)
 );
+store.fillProducts(productsList.value);
 </script>
