@@ -3,7 +3,9 @@
     <div class="bg-white py-10">
       <div class="container mx-auto">
         <div class="grid grid-cols-12 gap-6">
-          <div class="col-span-5 w-full flex items-end justify-center">
+          <div
+            class="col-span-5 w-full flex items-end justify-center text-[#445A74]"
+          >
             هفت روز هفته از ۸ صبح تا ۱۲ شب پاسخگو هستیم
           </div>
           <div class="col-span-2 w-full">
@@ -12,7 +14,7 @@
               <li
                 v-for="item of easyAccess"
                 :key="item"
-                class="my-4 cursor-pointer"
+                class="my-4 cursor-pointer text-[#30445B]"
               >
                 {{ item }}
               </li>
@@ -24,7 +26,7 @@
               <li
                 v-for="item of siteHelp"
                 :key="item"
-                class="my-4 cursor-pointer"
+                class="my-4 cursor-pointer text-[#30445B]"
               >
                 {{ item }}
               </li>
@@ -36,7 +38,7 @@
               <li
                 v-for="item of socialMedia"
                 :key="item"
-                class="my-4 cursor-pointer flex align-center"
+                class="my-4 cursor-pointer flex align-center text-[#30445B]"
               >
                 <img
                   :src="item.image"
