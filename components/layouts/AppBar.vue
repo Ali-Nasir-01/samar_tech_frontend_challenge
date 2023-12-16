@@ -27,6 +27,7 @@
         class="md:hidden border-primary border-2"
         outline
         rounded="rounded-2xl"
+        @click="drawer = true"
       >
         <div class="flex items-center">
           <SvgRender icon="menu" color="#E20054" width="20" />
@@ -49,6 +50,11 @@
         </div>
       </VButton>
     </nav>
+    <NavigationDrawer
+      :dialog="drawer"
+      :items="items"
+      @close="() => (drawer = false)"
+    />
   </header>
 </template>
 
@@ -79,4 +85,5 @@ const items = [
     icon: "phone",
   },
 ];
+const drawer = shallowRef<boolean>(false);
 </script>
