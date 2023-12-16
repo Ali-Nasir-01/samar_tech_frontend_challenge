@@ -40,4 +40,8 @@ const action = setApi(singleProduct, String(route.params.id));
 const { data: product } = await useAsyncData<IProduct>(action, () =>
   $fetch(action)
 );
+
+useHead({
+  title: "محصول",
+});
 </script>

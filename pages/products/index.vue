@@ -100,4 +100,8 @@ watch(sort, () => {
 watch(getSort, (newVal) => {
   sort.value = newVal;
 });
+
+useHead({
+  title: "لیست محصولات",
+});
 </script>
