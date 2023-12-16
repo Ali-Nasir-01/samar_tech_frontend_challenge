@@ -246,6 +246,33 @@
         :fill="color"
       />
     </svg>
+    <svg
+      v-else-if="icon === 'menu'"
+      :width="width"
+      :height="height"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M2 12H14"
+        :stroke="color"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M2 8H14"
+        :stroke="color"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M2 4H14"
+        :stroke="color"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
   </div>
 </template>
 
