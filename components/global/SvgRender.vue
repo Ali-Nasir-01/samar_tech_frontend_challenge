@@ -196,14 +196,13 @@
     <svg
       v-else-if="icon === 'search'"
       class="w-4 h-4"
-      :class="[`text-[${color}]`]"
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 20 20"
     >
       <path
-        stroke="currentColor"
+        :stroke="color"
         stroke-linecap="round"
         stroke-linejoin="round"
         stroke-width="2"
