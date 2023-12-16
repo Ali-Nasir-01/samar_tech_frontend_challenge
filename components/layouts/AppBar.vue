@@ -1,7 +1,9 @@
 <template>
-  <header class="w-full bg-[#fff] py-6 rounded-b-lg shadow">
-    <nav class="container mx-auto flex item-baseline mt-3 relative">
-      <div class="flex justify-around w-[600px] mx-auto">
+  <header class="w-full bg-[#fff] py-4 md:py-6 rounded-b-lg shadow">
+    <nav
+      class="lg:container lg:mx-auto flex items-center md:mt-3 relative px-4 lg:px-0"
+    >
+      <div class="md:flex hidden justify-around lg:w-[600px] w-full lg:mx-auto">
         <template v-for="item in items" :key="item.text">
           <SvgRender
             :icon="item.icon"
@@ -21,18 +23,44 @@
           </NuxtLink>
         </template>
       </div>
-      <VButton class="-mt-3 absolute left-0" rounded="rounded-2xl">
+      <VButton
+        class="md:hidden border-primary border-2"
+        outline
+        rounded="rounded-2xl"
+        @click="drawer = true"
+      >
+        <div class="flex items-center">
+          <SvgRender icon="menu" color="#E20054" width="20" />
+        </div>
+      </VButton>
+      <VButton
+        class="md:-mt-3 lg:absolute lg:left-0 mr-auto md:mr-0"
+        :class="[smAndDown ? 'border-primary border-2' : '']"
+        :outline="smAndDown"
+        rounded="rounded-2xl"
+      >
         <div class="flex item-center">
-          تماس
-          <SvgRender icon="phone" color="#fff" width="20" class="mr-3" />
+          <span class="hidden md:block"> تماس </span>
+          <SvgRender
+            icon="phone"
+            :color="smAndDown ? '#E20054' : '#fff'"
+            width="20"
+            class="md:mr-3"
+          />
         </div>
       </VButton>
     </nav>
+    <NavigationDrawer
+      :dialog="drawer"
+      :items="items"
+      @close="() => (drawer = false)"
+    />
   </header>
 </template>
 
 <script setup lang="ts">
 const route = useRoute();
+const { smAndDown } = useDisplay();
 const path = computed(() => route.path);
 
 const items = [
@@ -57,4 +85,5 @@ const items = [
     icon: "phone",
   },
 ];
+const drawer = shallowRef<boolean>(false);
 </script>

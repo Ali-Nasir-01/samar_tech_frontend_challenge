@@ -2,13 +2,13 @@
   <div>
     <div
       v-if="filteredData && filteredData.length > 0"
-      class="grid grid-cols-3 gap-4"
+      class="grid grid-cols-12 lg:grid-cols-3 gap-4"
     >
       <ProductView
         v-for="(item, key) in filteredData"
         :key="key"
         :item="item"
-        class="col-span-1"
+        class="lg:col-span-1 sm:col-span-6 col-span-12"
       />
     </div>
     <div v-else class="text-center">نتیجه‌ای یافت نشد</div>

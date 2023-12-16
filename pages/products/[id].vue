@@ -37,5 +37,7 @@ const {
 const { $fetch } = useNuxtApp();
 const route = useRoute();
 const action = setApi(singleProduct, String(route.params.id));
-const { data: product } = useAsyncData<IProduct>(action, () => $fetch(action));
+const { data: product } = await useAsyncData<IProduct>(action, () =>
+  $fetch(action)
+);
 </script>

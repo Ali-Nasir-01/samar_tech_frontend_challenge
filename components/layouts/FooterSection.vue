@@ -2,41 +2,43 @@
   <footer>
     <div class="bg-white py-10">
       <div class="container mx-auto">
-        <div class="grid grid-cols-12 gap-6">
-          <div class="col-span-5 w-full flex items-end justify-center">
+        <div class="grid grid-cols-12 gap-6 px-4 sm:px-0">
+          <div
+            class="lg:col-span-5 col-span-12 mb-5 lg:mb-0 w-full flex items-end justify-center text-[#445A74]"
+          >
             هفت روز هفته از ۸ صبح تا ۱۲ شب پاسخگو هستیم
           </div>
-          <div class="col-span-2 w-full">
+          <div class="lg:col-span-2 sm:col-span-4 col-span-6 w-full">
             <h4 class="text-xl font-bold">دسترسی آسان</h4>
             <ul class="mt-5">
               <li
                 v-for="item of easyAccess"
                 :key="item"
-                class="my-4 cursor-pointer"
+                class="my-4 cursor-pointer text-[#30445B]"
               >
                 {{ item }}
               </li>
             </ul>
           </div>
-          <div class="col-span-2 w-full">
+          <div class="lg:col-span-2 sm:col-span-4 col-span-6 w-full">
             <h4 class="text-xl font-bold">راهنمای سایت</h4>
             <ul class="mt-5">
               <li
                 v-for="item of siteHelp"
                 :key="item"
-                class="my-4 cursor-pointer"
+                class="my-4 cursor-pointer text-[#30445B]"
               >
                 {{ item }}
               </li>
             </ul>
           </div>
-          <div class="col-span-2 w-full">
+          <div class="lg:col-span-2 sm:col-span-4 col-span-6 w-full">
             <h4 class="text-xl font-bold">شبکه‌های اجتماعی</h4>
             <ul class="mt-5">
               <li
                 v-for="item of socialMedia"
                 :key="item"
-                class="my-4 cursor-pointer flex align-center"
+                class="my-4 cursor-pointer flex align-center text-[#30445B]"
               >
                 <img
                   :src="item.image"

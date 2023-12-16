@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div dir="rtl">
     <app-bar />
     <section class="container mx-auto my-6">
       <slot />
