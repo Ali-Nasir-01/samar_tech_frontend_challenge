@@ -18,12 +18,12 @@
         class="mt-4 grid grid-cols-12 gap-4 w-full"
       >
         <div
-          class="col-span-2 w-full p-4 bg-[#eef0f3] rounded-r-2xl text-[#57728E] flex items-center"
+          class="md:col-span-2 col-span-4 w-full p-4 bg-[#eef0f3] rounded-r-2xl text-[#57728E] flex items-center"
         >
           {{ item.title }}
         </div>
         <div
-          class="col-span-10 w-full p-4 bg-[#eef0f3] rounded-l-2xl flex items-center text-lg"
+          class="md:col-span-10 col-span-8 w-full p-4 bg-[#eef0f3] rounded-l-2xl flex items-center text-lg"
         >
           {{ item.value }}
         </div>
