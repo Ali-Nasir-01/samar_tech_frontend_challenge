@@ -17,7 +17,16 @@ export default defineNuxtConfig({
     },
   },
   image: {
-    // Options
+    quality: 80,
+    format: ['webp'],
+    presets: {
+      products: {
+        modifiers: {
+          width: 50,
+          height: 50
+        }
+      }
+    }
   },
   runtimeConfig: {
     public: {

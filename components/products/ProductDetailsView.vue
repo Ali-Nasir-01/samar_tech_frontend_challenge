@@ -4,7 +4,7 @@
       <h3 class="text-xl font-bold">
         {{ product.title }}
       </h3>
-      <img
+      <NuxtImg
         :src="product.image"
         :alt="product.title"
         class="mx-auto h-[350px] mt-7"
