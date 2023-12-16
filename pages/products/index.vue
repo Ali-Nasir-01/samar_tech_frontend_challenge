@@ -1,6 +1,6 @@
 <template>
   <div class="grid grid-cols-12 gap-4">
-    <aside class="col-span-3 w-full">
+    <aside class="col-span-12 md:col-span-4 lg:col-span-3 w-full">
       <!-- Search card -->
       <VCard>
         <h3 class="text-[#445A74]">فیلتر و جستجو</h3>
@@ -42,7 +42,7 @@
       <CategoriesCard />
     </aside>
     <!-- Products list -->
-    <div class="col-span-9 w-full">
+    <div class="lg:col-span-9 md:col-span-8 col-span-12 w-full">
       <AppliedFilters class="mb-4" />
       <ProductsList class="w-full" />
     </div>
